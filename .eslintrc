@@ -1,0 +1,30 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "installedESLint": true,
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "no-tabs": "off",
+    "indent": [2, "tab"],
+    "react/jsx-uses-vars": [2],
+    "react/jsx-indent": [2, "tab"],
+    "react/jsx-uses-react": [2],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/prefer-default-export": "off",
+    "no-unused-vars": ["error", {"argsIgnorePattern": "next"}]
+  }
+}
