@@ -1,7 +1,7 @@
 {
-  "name": "react-starter",
+  "name": "react-show-tracker",
   "version": "0.1.0",
-  "description": "A React starter.",
+  "description": "Keep track of your favorite TV shows.",
   "scripts": {
     "start": "node server.js",
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.js --progress --profile --colors",
@@ -19,6 +19,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-3": "^6.17.0",
+    "bulma": "^0.2.3",
     "css-loader": "^0.25.0",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^12.0.0",
@@ -26,6 +27,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "node-normalize-scss": "^1.4.0",
     "node-sass": "^3.11.1",
     "postcss-loader": "^1.1.0",
     "sass-loader": "^4.0.2",
@@ -35,6 +37,7 @@
     "webpack-hot-middleware": "^2.13.1"
   },
   "dependencies": {
+    "axios": "^0.15.2",
     "express": "^4.14.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

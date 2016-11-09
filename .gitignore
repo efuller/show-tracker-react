@@ -44,3 +44,6 @@ jspm_packages
 # Notes
 notes.md
 
+# API Key
+app/config
+

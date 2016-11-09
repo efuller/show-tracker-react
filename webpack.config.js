@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const normalize = require('node-normalize-scss');
 
 module.exports = {
 	entry: [
@@ -31,5 +32,10 @@ module.exports = {
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin()
-	]
+	],
+	sassLoader: {
+		includePaths: [
+			normalize.includePaths
+		]
+	},
 };

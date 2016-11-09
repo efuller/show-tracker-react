@@ -1,7 +1,4 @@
 var express = require('express');
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config');
-
 
 // Create our app
 const isDeveloping = process.env.NODE_ENV !== 'production';
@@ -9,6 +6,8 @@ const PORT = process.env.PORT || 3000;
 var app = express();
 
 if (isDeveloping) {
+	const webpack = require('webpack');
+	const webpackConfig = require('./webpack.config');
 	const compiler = webpack(webpackConfig);
 
 	app.use(require('webpack-dev-middleware')(compiler, {

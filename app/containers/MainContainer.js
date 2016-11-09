@@ -1,9 +1,14 @@
 import React from 'react';
 
+import Header from '../components/Header';
+
 function MainContainer({ children }) {
 	return (
-		<div className="main-container">
-			{children}
+		<div>
+			<Header/>
+			<div className="container is-12">
+				{children}
+			</div>
 		</div>
 	);
 }
