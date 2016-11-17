@@ -1,0 +1,14 @@
+.icon-next,
+.icon-previous {
+	background-size: 30px !important;
+	height: 30px;
+	width: 30px;
+}
+
+.icon-next {
+	background: url('../assets/svg/circle-right.svg');
+}
+
+.icon-previous {
+	background: url('../assets/svg/circle-left.svg');
+}

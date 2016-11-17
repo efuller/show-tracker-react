@@ -1,8 +1,8 @@
 import React from 'react';
 
-function ShowCard({poster, name, openModal}) {
+function ShowCard({id, poster, name, openModal}) {
 	return (
-		<div className="column is-one-quarter" onClick={openModal}>
+		<div className="column is-one-quarter" onClick={() => openModal(id)}>
 			<div className="card">
 				<div className="card-image">
 					<figure className="image">
@@ -30,7 +30,7 @@ function ShowList({shows, onOpenModal}) {
 		<div className="columns is-multiline">
 			{
 				shows.map((show) => (
-					<ShowCard key={show.id} openModal={onOpenModal} name={show.name} poster={show.poster_path}/>
+					<ShowCard key={show.id} openModal={onOpenModal} id={show.id} name={show.name} poster={show.poster_path}/>
 				))
 			}
 		</div>

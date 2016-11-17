@@ -24,6 +24,10 @@ module.exports = {
 			{
 				test: /(\.scss)$/,
 				loader: ExtractTextPlugin.extract('css!postcss!sass')
+			},
+			{
+				test: /\.svg/,
+				loader: 'svg-url-loader'
 			}
 		]
 	},

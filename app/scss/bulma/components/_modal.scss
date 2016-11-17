@@ -1,0 +1,7 @@
+// Modal card
+.modal-card {
+
+	@media screen and (min-width: $desktop) {
+		width: 960px;
+	}
+}

@@ -8,8 +8,18 @@ That's it.
 
 ## TODO
 
-[ ] Homepage container will be for searching shows.  
-[ ] Show Details container will be for view show details.
+[x] Homepage container will be for searching shows.  
+[ ] Show Details in show modal.
+[ ] Get node environments setup - prod and dev
+
+## Features
+* Search for shows
+* View show details - ratings, description, etc
+* Subscribe/Favorite shows
+    * View seasons/episodes
+    * Mark episodes/seasons as watched
+    * Next episode date
+    * Personal rating
 
 ## Resources
 * https://github.com/ReactjsProgram/ES6-for-React-Curriculum
