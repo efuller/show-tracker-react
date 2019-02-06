@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 class ShowDetailsModal extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		if (this.props.isOpen === false) {
@@ -12,7 +9,7 @@ class ShowDetailsModal extends Component {
 
 		return (
 			<div className="modal is-active">
-				<div className="modal-background"></div>
+				<div className="modal-background" />
 				<div className="modal-card">
 					<header className="modal-card-head">
 						<p className="modal-card-title">{this.props.title}</p>
@@ -25,19 +22,31 @@ class ShowDetailsModal extends Component {
 						{
 							!this.props.previousShow
 							? ''
-							: <a className="icon-previous" onClick={this.props.onPreviousShow}></a>
+							: <a className="icon-previous" onClick={this.props.onPreviousShow}>&nbsp;</a>
 						}
 						{
 							!this.props.nextShow
 							? ''
-							: <a className="icon-next" onClick={this.props.onNextShow}></a>
+							: <a className="icon-next" onClick={this.props.onNextShow}>&nbsp;</a>
 						}
 					</footer>
 				</div>
 			</div>
 
-		)
+		);
 	}
 }
+
+// @todo Need to fix previous/next show props - need to use shape.
+ShowDetailsModal.propTypes = {
+	isOpen: PropTypes.bool.isRequired,
+	title: PropTypes.string,
+	onCloseModal: PropTypes.func.isRequired,
+	children: PropTypes.element.isRequired,
+	previousShow: PropTypes.shape(),
+	nextShow: PropTypes.shape(),
+	onPreviousShow: PropTypes.func.isRequired,
+	onNextShow: PropTypes.func.isRequired,
+};
 
 export default ShowDetailsModal;

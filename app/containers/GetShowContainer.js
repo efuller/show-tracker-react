@@ -6,6 +6,11 @@ import ShowList from '../components/ShowList';
 import ShowDetailsModal from '../components/ShowDetailsModal';
 
 class GetShowContainer extends Component {
+
+	static getShowIndex(shows, currentShow) {
+		return shows.findIndex(show => show.id === currentShow.id);
+	}
+
 	constructor() {
 		super();
 
@@ -35,6 +40,33 @@ class GetShowContainer extends Component {
 		document.body.removeEventListener('keydown');
 	}
 
+	getActiveShow(id) {
+		const shows = this.state.shows;
+		return shows.filter(show => show.id === id);
+	}
+
+	getNextShow(activeShow) {
+		const { shows } = this.state;
+		const currentIndex = GetShowContainer.getShowIndex(shows, activeShow);
+
+		if (shows[currentIndex + 1]) {
+			return shows[currentIndex + 1];
+		}
+
+		return null;
+	}
+
+	getPreviousShow(activeShow) {
+		const { shows } = this.state;
+		const currentIndex = GetShowContainer.getShowIndex(shows, activeShow);
+
+		if (shows[currentIndex - 1]) {
+			return shows[currentIndex - 1];
+		}
+
+		return null;
+	}
+
 	handleKeyPress(event) {
 		const next = 39;
 		const previous = 37;
@@ -56,33 +88,6 @@ class GetShowContainer extends Component {
 		}
 	}
 
-	getActiveShow(id) {
-		const shows = this.state.shows;
-		return shows.filter((show) => show.id === id);
-	}
-
-	getShowIndex(shows, currentShow) {
-		return shows.findIndex(show => show.id === currentShow.id);
-	}
-
-	getNextShow(activeShow) {
-		const { shows } = this.state;
-		const currentIndex = this.getShowIndex(shows, activeShow);
-
-		if (shows[currentIndex+1]) {
-			return shows[currentIndex + 1];
-		}
-	}
-
-	getPreviousShow(activeShow) {
-		const { shows } = this.state;
-		const currentIndex = this.getShowIndex(shows, activeShow);
-
-		if (shows[currentIndex - 1]) {
-			return shows[currentIndex - 1];
-		}
-	}
-
 	handleOpenModal(id) {
 		const activeShow = this.getActiveShow(id);
 		const nextShow = this.getNextShow(activeShow[0]);
@@ -94,7 +99,6 @@ class GetShowContainer extends Component {
 			nextShow,
 			previousShow,
 		});
-
 	}
 
 	handleCloseModal() {
@@ -103,8 +107,8 @@ class GetShowContainer extends Component {
 
 	handleChange(event) {
 		this.setState({
-			searchValue: event.target.value
-		})
+			searchValue: event.target.value,
+		});
 	}
 
 	handleSubmit(event) {
@@ -113,12 +117,12 @@ class GetShowContainer extends Component {
 		getShows(this.state.searchValue)
 			.then((showData) => {
 				this.setState({
-					shows: showData.data.results
+					shows: showData.data.results,
 				});
 			});
 	}
 
-	handleNextShow(event) {
+	handleNextShow() {
 		const nextShow = this.getNextShow(this.state.nextShow) || undefined;
 		const previousShow = this.getPreviousShow(this.state.nextShow) || undefined;
 
@@ -127,7 +131,6 @@ class GetShowContainer extends Component {
 			nextShow,
 			previousShow,
 		});
-
 	}
 
 	handlePreviousShow() {
@@ -139,7 +142,6 @@ class GetShowContainer extends Component {
 			nextShow,
 			previousShow,
 		});
-
 	}
 
 	render() {
@@ -154,15 +156,25 @@ class GetShowContainer extends Component {
 					shows={this.state.shows}
 					onOpenModal={this.handleOpenModal}
 				/>
-				<ShowDetailsModal onNextShow={this.handleNextShow} onPreviousShow={this.handlePreviousShow} isOpen={this.state.isModalOpen} title={this.state.activeShow.name} previousShow={this.state.previousShow} nextShow={this.state.nextShow} onCloseModal={this.handleCloseModal}>
+				<ShowDetailsModal
+					onNextShow={this.handleNextShow}
+					onPreviousShow={this.handlePreviousShow}
+					isOpen={this.state.isModalOpen}
+					title={this.state.activeShow.name}
+					previousShow={this.state.previousShow}
+					nextShow={this.state.nextShow}
+					onCloseModal={this.handleCloseModal}
+				>
 					<div className="columns">
 						<div className="column is-one-third">
 							<figure className="image">
-								<img src={
-									!this.state.activeShow.poster_path
-										? `http://placehold.it/300x450`
+								<img
+									src={!this.state.activeShow.poster_path
+										? 'http://placehold.it/300x450'
 										: `https://image.tmdb.org/t/p/w300_and_h450_bestv2${this.state.activeShow.poster_path}`
-								} alt={`${name}`}/>
+									}
+									alt={`${name}`}
+								/>
 							</figure>
 						</div>
 						<div className="column is-two-thirds">
@@ -172,7 +184,7 @@ class GetShowContainer extends Component {
 					</div>
 				</ShowDetailsModal>
 			</div>
-		)
+		);
 	}
 }
 

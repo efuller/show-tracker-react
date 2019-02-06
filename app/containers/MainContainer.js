@@ -5,7 +5,7 @@ import Header from '../components/Header';
 function MainContainer({ children }) {
 	return (
 		<div>
-			<Header/>
+			<Header />
 			<div className="container is-12">
 				{children}
 			</div>
