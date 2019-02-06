@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server.js",
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.js --progress --profile --colors",
-    "prod": "NODE_ENV=production node server.js"
+    "prod": "NODE_ENV=production node server.js",
+    "lint": "eslint app/.; exit 0"
   },
   "author": "Eric Fuller",
   "license": "MIT",
